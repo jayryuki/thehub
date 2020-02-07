@@ -10,6 +10,8 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import TextField from '@material-ui/core/TextField';
+import Upload from '../components/Upload';
 
 const styles ={
     solution: {
@@ -38,17 +40,21 @@ const styles ={
 }
 
 export class searchClass extends Component {
+
+    state = {
+        open: false
+    }
+    
+    handleToggle = () => {
+        this.setState({
+            open: !this.state.open
+        })
+    }
+
     render() {
         const { classes } = this.props;
-        const [open, setOpen] = [false, false]; //fix later
+        const { open } = this.state;
 
-        const handleOpen = () => {
-          setOpen(true);
-        };
-      
-        const handleClose = () => {
-          setOpen(false);
-        };
         return (
             <Grid container textAlign="left">
                 <Grid item xs={3}/>
@@ -58,14 +64,14 @@ export class searchClass extends Component {
                     <Problem/>
                     <Problem/>
                     <IconButton color="primary" size="medium" className={classes.button}>
-                         <AddCircleIcon className={classes.add} onClick={handleOpen}/>
+                         <AddCircleIcon className={classes.add} onClick={this.handleToggle}/>
                     </IconButton>
                     <Modal
                         aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"
                         className={classes.modal}
                         open={open}
-                        onClose={handleClose}
+                        onClose={this.handleToggle}
                         closeAfterTransition
                         BackdropComponent={Backdrop}
                         BackdropProps={{
@@ -73,10 +79,7 @@ export class searchClass extends Component {
                         }}
                     >
                         <Fade in={open}>
-                        <div className={classes.paper}>
-                            <h2 id="transition-modal-title">Transition modal</h2>
-                            <p id="transition-modal-description">react-transition-group animates me.</p>
-                        </div>
+                            <Upload/>
                         </Fade>
                     </Modal>
                 </Grid>
