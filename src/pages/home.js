@@ -12,6 +12,8 @@ import { logicalExpression } from '@babel/types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import GoogleLogin from 'react-google-login';
+
 const styles = {
     search: {
         
@@ -54,6 +56,10 @@ const INITIAL_STATE = {
         const { classes } = this.props;
         const isInvalid = name === '';
 
+        const responseGoogle = (response) => {
+            console.log(response);
+          }
+
         return (
             <Grid container textAlign="center">
                 <Grid item sm/>
@@ -85,7 +91,6 @@ const INITIAL_STATE = {
                         >
                         Search
                     </Button>
-
                     {error && <p>{error.message}</p>}
                 </form>
 

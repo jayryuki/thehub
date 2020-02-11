@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { Typography } from '@material-ui/core';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { Box, Button } from '@material-ui/core';
 
 const styles ={
     solution: {
@@ -17,6 +18,9 @@ const styles ={
     },
     description: {
         margin: '10px auto 10px auto'
+    },
+    name: {
+        width: '20px'
     }
 }
 
@@ -28,6 +32,7 @@ export class Solution extends Component {
                     <Typography variant="h4" >Problem:</Typography>
                         <Card className={classes.description}>
                             <CardContent>
+
                                 <Typography variant="body2" color="textSecondary" component="p">
                                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
                                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -35,6 +40,7 @@ export class Solution extends Component {
                                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                                 </Typography>
+
                             </CardContent>
                         </Card>
                     <Typography variant="h4" >Solution:</Typography>
@@ -63,7 +69,10 @@ export class Solution extends Component {
                             </CardContent>
                         </Card>
                         <br></br>
-                        <Typography variant="subtitle2" className={classes.description}>Posted by: name  </Typography>
+                        <div>
+                        <Typography variant="subtitle2" className={classes.name}>Posted by: name  </Typography>
+                        <Button color="primary" variant="contained"> Edit Post </Button>
+                        </div>
             </div>
         )
     }

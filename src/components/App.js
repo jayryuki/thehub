@@ -2,13 +2,18 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 
-import NavBar from './components/NavBar';
+import NavBar from './NavBar';
 
-import home from './pages/home';
-import results from './pages/results';
-import searchClass from './pages/searchClass';
+import home from '../pages/home';
+import results from '../pages/results';
+import searchClass from '../pages/searchClass';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import SignUpPage from './SignUp/signUp';
+import SignInPage from './SignIn/signIn';
+
+import { withAuthentication } from './Session';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -27,23 +32,26 @@ const theme = createMuiTheme({
 }
 });
 
-function App() {
-  return (
+const App = () => (
     <MuiThemeProvider theme={theme}>
     <div className="App">
       <Router>
         <NavBar/>
         <div class="container">
         <Switch>
+        <Route exact path="/signIn" component={SignInPage} />
           <Route exact path="/" component={home}></Route>
           <Route exact path="/results" component={results}></Route>
           <Route exact path="/search" component={searchClass}></Route>
+          <Route exact path="/signUp" component={SignUpPage} />
+
         </Switch>
         </div>
       </Router>
     </div>
     </MuiThemeProvider>
   );
-}
 
-export default App;
+
+
+export default withAuthentication(App);
