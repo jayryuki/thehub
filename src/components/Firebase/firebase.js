@@ -39,6 +39,11 @@ const config = {
     user = uid => this.db.ref(`users/${uid}`);
 
     users = () => this.db.ref('users');
+
+    // *** Classes API ***
+    post = uid => this.db.ref(`users/`);
+
+    posts = uid => this.db.ref(`users/${uid}`);
 }
 export default Firebase;
 export {app};

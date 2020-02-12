@@ -39,8 +39,8 @@ const App = () => (
         <NavBar/>
         <div class="container">
         <Switch>
-        <Route exact path="/signIn" component={SignInPage} />
-          <Route exact path="/" component={home}></Route>
+        <Route exact path="/" component={SignInPage} />
+          <Route exact path="/home" component={home}></Route>
           <Route exact path="/results" component={results}></Route>
           <Route exact path="/search" component={searchClass}></Route>
           <Route exact path="/signUp" component={SignUpPage} />

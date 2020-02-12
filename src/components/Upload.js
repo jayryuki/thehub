@@ -52,46 +52,82 @@ const styles ={
       }
 }
 
-const INITIAL_STATE = {
-    email: '',
-    solution: '',
-    notes: '',
-    error: null,
-  };
 
 export class Upload extends Component {
     constructor(props) {
         super(props);
+        
+        this.createPost = this.createPost.bind(this);
+        this.handlePostEditorChange = this.handlePostEditorChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
-        this.state = { ...INITIAL_STATE };
+        this.state = { 
+            newPostBody: '',
+            problem: '',
+            solution: '',
+            notes: '',
+            error: null,
+        };
+    }
+
+    addPost() {
+        const newState = Object.assign({}, this.state);
+        newState.posts.push(this.state.newPostBody);
+        newState.newPostBody = '';
+        this.setState(newState);
+
     }
     
-    onSubmit = event => {
-        const { problem, solution, notes } = this.state;
+    handlePostEditorChange(ev){
+        this.setState({ [ev.target.name]: ev.target.value });
+    }
 
-       /* this.props.firebase
-            .doSignInWithEmailAndPassword(email, solution)
-            .then(() => {
-            this.setState({ ...INITIAL_STATE });
-           // this.props.history.push(ROUTES.HOME);
-            })
-            .catch(error => {
-            this.setState({ error });
-            });*/
+    createPost() {
+        this.props.addPost(this.state.newPostBody);
+        this.setState({
+            newPostBody: '',
+        });
+    }
+  
+    handleSubmit(event) {
+        const formItem = {
+          problem: this.state.problem,
+          solution: this.state.solution,
+          notes: this.state.notes,
+        };
+    
+        if (
+          this.state.problem === "" ||
+          this.state.solution === "" ||
+          this.state.notes === ""
+        ) {
+          alert("Please fill mandatory filed");
+        } else {
 
+            // add new item
+            this.setState(prevState => ({
+              formdata: prevState.formdata.concat(formItem)
+            }));
+    
+          }
+    
+          alert("form submited: ");
+          this.setState({
+            problem: '',
+            solution: '',
+            notes: ''
+        });
+    
         event.preventDefault();
-    };
+      }
 
-    onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
     render() {
         const { problem, solution, notes, error } = this.state;
         const { classes } = this.props;
         const isInvalid = solution === '' || problem === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.props.addPost}>
             <Card>
             <CardContent>
                 <TextField
@@ -108,7 +144,7 @@ export class Upload extends Component {
                     autoFocus
                     name="problem"
                     value={problem}
-                    onChange={this.onChange}
+                    onChange={this.handlePostEditorChange}
                     type="text"
                 />
                 <TextField
@@ -125,7 +161,7 @@ export class Upload extends Component {
                     autoFocus
                     name="solution"
                     value={solution}
-                    onChange={this.onChange}
+                    onChange={this.handlePostEditorChange}
                     type="text"
                 />
                 <TextField
@@ -141,7 +177,7 @@ export class Upload extends Component {
                     autoFocus
                     name="notes"
                     value={notes}
-                    onChange={this.onChange}
+                    onChange={this.handlePostEditorChange}
                     type="text"
                 />
 

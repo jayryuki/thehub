@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core' 
-import blue from '@material-ui/core/colors/blue'
+
 
 
 const theme = createMuiTheme({
@@ -25,7 +25,7 @@ const theme = createMuiTheme({
 
 const SignOutButton = ({ firebase }) => (
   <MuiThemeProvider theme={theme}>
-  <Button color="inherit" onClick={firebase.doSignOut} component={Link} to="/signin" >
+  <Button color="inherit" onClick={firebase.doSignOut} component={Link} to="/" >
     Sign Out
   </Button>
   </MuiThemeProvider>

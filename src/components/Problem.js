@@ -24,13 +24,18 @@ const styles ={
     }
 }
 
-export class Problem extends Component {
+
+/*export class Problem extends Component {
+
     render() {
+
+        
         const { classes } = this.props;
         return (
             <Card className={classes.description}>
             <CardContent>
             <Typography variant="h5"  component="p" className={classes.caption}> Problem:  </Typography>
+                <Typography variant ="h1"> {props.postBody}</Typography>
                 <Typography variant="body2" color="textSecondary" component="p" className={classes.caption}>
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -44,5 +49,20 @@ export class Problem extends Component {
         )
     }
 }
+
+export default withStyles(styles)(Problem);*/
+
+const Problem = (props) => (
+
+<Card style = {{ margin: '10px auto 10px auto'}}>
+            <CardContent>
+            <Typography variant="h5"  component="p" style = {{ textAlign: 'left', margin: 'auto auto auto 20px'}}> Problem: {props.problem} </Typography>
+                <Typography variant="body2" color="textSecondary" component="p" style = {{ textAlign: 'left', margin: 'auto auto auto 20px'}}>
+                Solution: {props.solution}
+                 
+                </Typography>
+            </CardContent>
+        </Card>
+);
 
 export default withStyles(styles)(Problem);

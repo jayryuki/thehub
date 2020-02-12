@@ -68,7 +68,7 @@ const Navigation = () => (
     <div>
     <AppBar>
         <Toolbar>
-            <Button color="inherit" component={Link} to="/">Home</Button>
+            <Button color="inherit" component={Link} to="/home">Home</Button>
             <Button color="inherit" component={Link} to="/search">Search</Button>
             <Button color="inherit" component={Link} to="/results">Results</Button>
                   <Typography style={{flex: 1}}></Typography>
