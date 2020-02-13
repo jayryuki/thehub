@@ -18,7 +18,8 @@ import CardContent from '@material-ui/core/CardContent';
 
 const styles ={
     solution: {
-        textAlign: 'center'
+        textAlign: 'center',
+        height: '290px'
     },
     card: {
         display: 'flex'
@@ -42,9 +43,6 @@ const styles ={
       },
       problem: {
         height: '100px'
-      },
-      solution: {
-        height: '290px'
       },
       notes: {
         height: '60px',

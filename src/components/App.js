@@ -15,6 +15,7 @@ import SignInPage from './SignIn/signIn';
 import { withAuthentication } from './Session';
 
 
+
 const theme = createMuiTheme({
   palette: {
     primary: {
