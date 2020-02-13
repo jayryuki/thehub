@@ -45,6 +45,7 @@ export default class AutoCompleteText extends React.Component {
             suggestions: [],
             text: '',
         };
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onTextChanged = (e) => {
@@ -78,13 +79,24 @@ export default class AutoCompleteText extends React.Component {
         }))
     }
 
+    onSubmit(e) {
+        const { text } = this.state;
+        e.preventDefault();
+        var course = {text}.text;
+        console.log(course);
+    }
+
     render() {
         const { text } = this.state;
         return (
-            <div className="AutoCompleteText">
-                <input value={text} onChange={this.onTextChanged} type="text" />
-                {this.renderSuggestions()}
-            </div>
+            
+                <form className="AutoCompleteText">
+                    <input value={text} onChange={this.onTextChanged} type="text" />
+                    {this.renderSuggestions()}
+                    <button type="button" onClick={this.onSubmit} className="btn">Submit</button>
+                </form>
+            
+            
         )
     }
 }

@@ -67,10 +67,12 @@ const INITIAL_STATE = {
                 <Grid item sm height="1000px">
                 <img src={StudyIcon} alt="logo" height="100px" width="100px" className={classes.image}/>
                 <Typography variant="h5" className={classes.description}> Welcome to The Hub, search for your class to begin learning! :) </Typography>
-                <div className="App-Component">
-                    <AutoCopmleteText items={courses}/>
-                </div>
                 
+                <div className="App-Component">
+                     <AutoCopmleteText items={courses}/>
+                </div>
+
+                    
 
 
                 {/*
