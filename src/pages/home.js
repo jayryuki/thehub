@@ -12,8 +12,8 @@ import { logicalExpression } from '@babel/types';
 import TextField from '@material-ui/core/TextField';
 import AutoCopmleteText from '../components/Search/AutoCompleteText.js'
 import Button from '@material-ui/core/Button';
-
 import GoogleLogin from 'react-google-login';
+import courses from '../components/Search/courses.js'
 
 const styles = {
     search: {
@@ -68,7 +68,7 @@ const INITIAL_STATE = {
                 <img src={StudyIcon} alt="logo" height="100px" width="100px" className={classes.image}/>
                 <Typography variant="h5" className={classes.description}> Welcome to The Hub, search for your class to begin learning! :) </Typography>
                 <div className="App-Component">
-                    <AutoCopmleteText/>
+                    <AutoCopmleteText items={courses}/>
                 </div>
                 
 
